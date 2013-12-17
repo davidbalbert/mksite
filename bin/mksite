@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'mksite'
+require 'docopt'
+
+doc = <<DOC
+Mksite is a static site generator.
+
+Usage:
+  #{__FILE__} new <name>
+  #{__FILE__} build
+  #{__FILE__} serve
+
+Options:
+  -h --help       Show this screen.
+  -v --version    Show the version.
+
+DOC
+
+begin
+  opts = Docopt::docopt(doc, help: true, version: Mksite::VERSION)
+
+  if opts["new"]
+    Mksite::Command::New.run(opts["<name>"])
+  elsif opts["build"]
+    Mksite::Command::Build.run
+  elsif opts["serve"]
+    Mksite::Command::Serve.run
+  else
+    raise "Shouldn't get here!"
+  end
+rescue Docopt::Exit => e
+  STDERR.puts e.message
+
+  exit 1 unless ARGV.empty?
+rescue Mksite::CommandError => e
+  STDERR.puts "#{$0}: #{e.message}"
+  exit 1
+end
