@@ -33,7 +33,7 @@ rescue Docopt::Exit => e
   STDERR.puts e.message
 
   exit 1 unless ARGV.empty?
-rescue Mksite::CommandError => e
+rescue Mksite::Error => e
   STDERR.puts "#{$0}: #{e.message}"
   exit 1
 end

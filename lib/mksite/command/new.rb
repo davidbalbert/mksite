@@ -13,7 +13,7 @@ module Mksite
 
       def run
         if File.exists?(output_path)
-          raise Mksite::CommandError, "#{output_path} already exists."
+          raise Mksite::Error, "#{output_path} already exists."
         end
 
         FileUtils.mkdir_p output_path
