@@ -7,9 +7,9 @@ doc = <<DOC
 Mksite is a static site generator.
 
 Usage:
-  #{__FILE__} new <name>
-  #{__FILE__} build
-  #{__FILE__} serve
+  #{$0} new <name>
+  #{$0} build
+  #{$0} serve
 
 Options:
   -h --help       Show this screen.
