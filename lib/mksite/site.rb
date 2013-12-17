@@ -31,7 +31,6 @@ module Mksite
       Dir.chdir(path) do
         FileUtils.cp_r Dir["*"] - Dir["_*"], output_path
       end
-
     end
 
     def config_path
